@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="xcx-JJ-BD8" id="pGm-5J-BBj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="u9u-Cf-uep"/>
+                    <navigationItem key="navigationItem" id="gtY-yz-TLi"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="push" id="ONK-Xk-ILO"/>
                         <segue destination="T9w-Vv-MVp" kind="push" id="lxA-H9-kgE"/>
@@ -40,7 +40,64 @@
             </objects>
             <point key="canvasLocation" x="500.00000000000006" y="104.46428571428571"/>
         </scene>
-        <!--MapVC-->
+        <!--Result ListVC-->
+        <scene sceneID="86G-gx-cAn">
+            <objects>
+                <tableViewController storyboardIdentifier="ResultListVC" id="p25-tw-Jvm" customClass="ResultListVC" customModule="LocationUse" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Vp-DA-NoA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rvN-lm-LvM">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rvN-lm-LvM" id="2tP-6y-SfR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p25-tw-Jvm" id="JZ0-gk-Lx2"/>
+                            <outlet property="delegate" destination="p25-tw-Jvm" id="pp9-gq-mL0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="AMw-af-zPc"/>
+                    <connections>
+                        <segue destination="w1d-fB-UsL" kind="push" id="GH7-re-Jyz"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8TT-F4-Vgm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1280" y="781"/>
+        </scene>
+        <!--RouteVC-->
+        <scene sceneID="tqo-tC-seS">
+            <objects>
+                <viewController storyboardIdentifier="RouteVC" id="w1d-fB-UsL" customClass="RouteVC" customModule="LocationUse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l95-wA-K7w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="evr-Re-QdU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XTk-dm-zlG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R7T-Kd-yrD"/>
+                    <connections>
+                        <outlet property="routeMap" destination="evr-Re-QdU" id="C0a-co-5WS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5IB-m2-gJC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2037.68115942029" y="780.80357142857144"/>
+        </scene>
+        <!--Title-->
         <scene sceneID="h1b-8o-YyU">
             <objects>
                 <viewController storyboardIdentifier="MapVC" id="T9w-Vv-MVp" customClass="MapVC" customModule="LocationUse" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,44 +105,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b7a-nQ-LJ3">
+                                <rect key="frame" x="0.0" y="179" width="414" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9M-tG-1k5">
+                                <rect key="frame" x="20" y="124" width="68" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pbg-Kh-an4">
+                                <rect key="frame" x="110" y="123" width="250" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="T9w-Vv-MVp" eventType="editingDidEndOnExit" id="1Q7-JZ-gC2"/>
+                                </connections>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWB-t6-k8t">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="794" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="ZOOM" id="YRY-35-z77">
                                         <connections>
-                                            <action selector="zoom:" destination="T9w-Vv-MVp" id="tNY-aX-pff"/>
+                                            <action selector="zoom:" destination="T9w-Vv-MVp" id="du1-gz-oA7"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fEh-Ch-D2U"/>
                                     <barButtonItem title="TYPE" id="bla-C3-pr9">
                                         <connections>
-                                            <action selector="type:" destination="T9w-Vv-MVp" id="fTK-13-MAl"/>
+                                            <action selector="type:" destination="T9w-Vv-MVp" id="xqj-FS-u6K"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b7a-nQ-LJ3">
-                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="V86-Hv-05e"/>
                     </view>
-                    <navigationItem key="navigationItem" id="twj-eD-ssi"/>
+                    <navigationItem key="navigationItem" title="Title" id="giv-ai-JdL"/>
                     <connections>
                         <outlet property="mapView" destination="b7a-nQ-LJ3" id="1ko-Gf-KzQ"/>
+                        <outlet property="searchText" destination="pbg-Kh-an4" id="dhP-Ec-sfl"/>
+                        <segue destination="p25-tw-Jvm" kind="push" id="JHi-6H-z01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gP-9s-YCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500.00000000000006" y="781.47321428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Location InfoVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LocationUse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationInfoVC" id="BYZ-38-t0r" customClass="LocationInfoVC" customModule="LocationUse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

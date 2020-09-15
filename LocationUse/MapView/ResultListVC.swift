@@ -1,5 +1,5 @@
 //
-//  RootViewController.swift
+//  ResultListVC.swift
 //  LocationUse
 //
 //  Created by 304 on 2020/09/15.
@@ -7,21 +7,21 @@
 //
 
 import UIKit
-
-class RootViewController: UITableViewController {
-    var titles = Array<String>()
-    var contents = Array<String>()
+import MapKit
+class ResultListVC: UITableViewController {
+    
+    //여기서 데이터를 검색할거면 검색어를 넘겨 받아야 하고
+    //앞에서 검색을 하고 여기서는 출력만 할거라면 결과를 넘겨 받아야 합니다.
+    var mapItems: [MKMapItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "iOS 실습"
-        
-        titles.append("현재 위치 정보")
-        contents.append("위치 정보 사용하여 현재 위치 가져오기")
-        
-        titles.append("지도 이용하기")
-        contents.append("지도")
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -33,45 +33,25 @@ class RootViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return titles.count
+        return mapItems?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //셀의 구분자를 생성
-        let cellIdenfier = "cell"
-        //테이블 뷰에서 재사용 가능한 셀을 받아옵니다.
-        var cell = tableView.dequeueReusableCell(withIdentifier:cellIdenfier)
-        //재사용 가능 셀이 없으면 생성
-        //style을 subtitle로 설정하면 레이블 2개, 이미지 뷰 1개
-        //엑세서리 뷰 1개 모두 사용 가능
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil{
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdenfier)
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         }
-        //레이블에 텍스트를 출력
-        cell!.textLabel?.text = titles[indexPath.row]
-        cell!.detailTextLabel!.text = contents[indexPath.row]
-        //액세서리 모양을 설정
-        cell!.accessoryType = .disclosureIndicator
+        //데이터 찾아와서 출력하기
+        if let item = mapItems?[indexPath.row]{
+            cell!.textLabel?.text = item.name
+            cell!.detailTextLabel?.text = item.phoneNumber
+        }
+
+        // Configure the cell...
 
         return cell!
-
-    }
-    
-    //셀을 선택했을 때 호출되는 메소드
-       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           if indexPath.row == 0{
-               
-               let locationInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "LocationInfoVC") as! LocationInfoVC
-               
-               self.navigationController?.pushViewController(locationInfoVC, animated: true)
-           }else if indexPath.row == 1{
-               
-               let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
-               
-               self.navigationController?.pushViewController(mapVC, animated: true)
-           }
-        
     }
 
 

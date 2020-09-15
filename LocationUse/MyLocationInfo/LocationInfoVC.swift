@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class LocationInfoVC: UIViewController {
     //위치 정보 사용을 위한 객체를 생성
     var locationManager:CLLocationManager =
         CLLocationManager()
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController : CLLocationManagerDelegate{
+extension LocationInfoVC : CLLocationManagerDelegate{
     //위치정보가 갱신되었을 때 호출되는 메소드
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //가장 마지막에 저장된 위치 정보 가져오기
